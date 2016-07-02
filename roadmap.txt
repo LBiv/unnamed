@@ -1,0 +1,30 @@
+Components:
+Provider
+User
+Requests
+
+Provider:
+GET id token
+GET info
+
+User:
+Unauthenticated:
+GET id token: params: user identifier => user token
+GET info: user info
+
+Authenticated
+POST id token: params: user identifier, authentication token, id token => success/failure
+GET keys: params: user identifier, authentication token => user keys
+POST keys: params: 
+GET addressbook: 
+POST addressbook: 
+GET info: 
+POST info;
+GET inventory:
+POST inventory:
+GET data:
+POST data:
+
+Requests:
+???
+
