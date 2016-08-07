@@ -14,17 +14,75 @@ GET info: user info
 
 Authenticated
 POST id token: params: user identifier, authentication token, id token => success/failure
-GET keys: params: user identifier, authentication token => user keys
+POST keys: params: user identifier, authentication token => user keys
 POST keys: params: 
-GET addressbook: 
 POST addressbook: 
-GET info: 
+POST addressbook: 
+POST info: 
 POST info;
-GET inventory:
 POST inventory:
-GET data:
+POST inventory:
+POST data:
 POST data:
 
 Requests:
 ???
+
+--------
+
+All API:
+Route via URLmap
+
+GET provider token:
+Retrieve Provider token
+Send back provider token over TLS
+
+GET provider info
+Retrieve Provider info
+Send back provider info over TLS
+
+POST retrieve user token
+TLS decrypt POST object
+Look up internal user id by POST identifier
+Look up user token by user id
+Send back user token over TLS 
+
+POST create user token
+TLS decrypt POST object
+Look uop internal user id by POST identifier
+Look up session receipt by internal user id
+COnfirm validity of sesion token with session receipt
+Look up user token by internal user id
+Store old user token in user token history
+Store new user token as user token
+
+
+
+
+
+GET provider token:
+providerToken :: ProviderToken
+providerTokenResponse :: ProviderToken -> Response
+
+GET provider info
+providerInfo :: ProviderInfo
+providerTokenResponse :: ProviderInfo -> Response
+
+POST retrieve user token
+getUserIdentifier :: Request -> UserIdentifier
+getInternalUserId :: UserIdentifer -> IO InternalUserId
+getUserToken :: InternalUserId -> IO UserToken
+userGetTokenResponse :: UserToken -> Response
+
+POST create user token
+getUserIdentifier :: Request -> UserIdentifier
+getInternalUserId :: UserIdentifer -> IO InternalUserId
+getUserSessionToken :: Request -> UserSessionToken
+getUserSessionReceipt :: InternalUserId -> IO UserSessionReceipt
+validateUserSession :: UserSessionReceipt -> UserSessionToken -> SessionStatus
+validateUserToken :: UserToken -> UserToken -> TokenValidity
+appendUserTokenHistory :: InternalUserId -> UserToken -> IO storeState
+storeUserToken :: InternalUserId -> UserToken -> IO storeState
+userSetTokenResponse :: (storeState, storeState) -> Response
+
 
