@@ -15,16 +15,16 @@ import Data.Aeson
 import Data.Aeson.Types
 
 
-data UserIdentifier = UserIdentifier { userIdentifierString :: B.ByteString }
+newtype UserIdentifier = UserIdentifier { userIdentifierString :: B.ByteString }
 
 instance FromJSON UserIdentifier where
     parseJSON (Object v) = UserIdentifier <$> encodeUtf8 <$> v .: "UserIdentifier"
 
 
-data InternalUserId = InternalUserId { internalUserId :: Integer }
+newtype InternalUserId = InternalUserId { internalUserId :: Integer }
 
 
-data UserToken = UserToken { userTokenString :: B.ByteString }
+newtype UserToken = UserToken { userTokenString :: B.ByteString }
 
 instance ToJSON UserToken where
     toJSON a = object ["UserToken" .= (decodeUtf8 (userTokenString a)) ]

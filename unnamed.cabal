@@ -17,10 +17,13 @@ library
   hs-source-dirs:      src
   exposed-modules:   User
                      , Provider
+                     , DataObject
+                     , DataId
                      , Routes
                      , Apps
                      , DataAccess
   build-depends:       base >= 4.7 && < 5
+                     , vector
                      , monad-logger
                      , resource-pool
                      , persistent

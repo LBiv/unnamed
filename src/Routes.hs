@@ -13,6 +13,8 @@ import Database.Persist.Sql
 import Apps ( providerTokenApp
             , providerInfoApp
             , userTokenRetrieveApp
+            , storeDataApp
+            , loadDataApp
             , loginApp
             , invalidApp
             )
@@ -25,6 +27,8 @@ appRoutes dbConnPool = do
     return $ mapUrls $
       mount "id" (providerTokenApp (fmap ProviderToken tokBS)) <|>
       mount "info" (providerInfoApp (fmap ProviderInfo infBS)) <|>
+      mount "storeData" (storeDataApp dbConnPool) <|>
+      mount "loadData" (loadDataApp dbConnPool) <|> 
       mount "login" loginApp <|>
       mount "userToken" userTokenRetrieveApp <|>
       mountRoot invalidApp
