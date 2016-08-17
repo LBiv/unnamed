@@ -1,3 +1,67 @@
+Mode 1: User-less encrypted data storage.
+
+What's left?
+
+In C:
+!!!RETHINK BINARY FORMAT!!! (from key types to parsing data objects/tokens)
+Key generation
+Data encryption
+Keyslot encryption
+Keyslot, Data serialization.
+Keyslot, Data deserialization.
+Keyslot decryption
+Data decryption
+Data signing
+Data signature verification
+
+In haskell:
+Loading private signing key
+FFI call for data signing
+Separate storage of ephemeral key, (possible separation and  marshalling of the ephemeral key separately)
+
+In AngularJS:
+Compile to javascript via emscripten:
+  loading of private key
+  Key generation
+  Data encryption
+  Keyslot encryption
+  Keyslot, Data serialization
+  Keyslot, Data deserialization
+  Keyslot decryption
+  Data decryption 
+  Data signing
+  Data signature verification
+  Service to encrypt data to a certain key.
+
+Enhancements:
+Method of partial data retrieval
+
+Technical backlog:
+All:
+Refactoring names (unnamed, ui-unnamed)
+
+C:
+Moving to a different crypto library.
+Pulling in a good RNG.
+Refactoring crypto interfaces to allocate less memory.
+Change the loggers to not be per-thread.
+
+
+Haskell:
+Configuration loader
+CLI Tool for creating/changing Provider (maybe private key), token, info
+Refactoring Haskell Code!!! (Routes, Apps in particular)
+Separating library into hierarchies (hierarchy per feature?)
+Refacotring Haskell module names.
+
+AngularJS:
+None.
+Start building real application?
+
+
+
+deprecated August 17th 2016
+vvvvvvvvvvvvvvvvvvvvvvvvvvv
 Components:
 Provider
 User
